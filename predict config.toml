@@ -1,0 +1,9 @@
+# enter variables for easy prediction config
+img_dir = "Melbourne"
+checkpoint_name = "Solar_Best.pth"
+
+img_size = 256
+checkpoint_path = "checkpoint"
+target_type = "Solar"
+mask_dir = "predicted_masks"
+  
