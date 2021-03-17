@@ -1,11 +1,12 @@
 # enter variables for easy prediction config
-img_dir = "dataset/Melbourne"
-checkpoint_name = "Solar_Best.pth"
+city_name = "Melbourne"
+
+# for green roofs, change to "Green"
 target_type = "Solar"
 
 
 # optional settings
 img_size = 256
 checkpoint_path = "checkpoint"
-mask_dir = "predicted_masks"
-  
+solar_checkpoint = "Solar_Best.pth"
+green_checkpoint = "Green_Best.pth"

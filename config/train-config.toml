@@ -1,13 +1,16 @@
 # config file for easy config settings
 # path to training and validation
-checkpoint_path = "checkpoint"
+
 dataset_path = "dataset"
 target_type = "Solar"
+
+
+#model params
 tile_size = 256
 lr = 0.0005 
-
 loss_func = "Lovasz"
 num_epochs = 10
 target_size = 256
 batch_size  = 8
 weights = [1.513212, 10.147043]
+checkpoint_path = "checkpoint"

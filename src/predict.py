@@ -66,31 +66,27 @@ def predict(tiles_dir, mask_dir, tile_size, device, chkpt):
     
     print("Prediction Done, saved masks to " + mask_dir)
 
-def mask_to_feature(output_folder):
-
-    handler = ParkingHandler()
-    
-    tiles = list(tiles_from_slippy_map(mask_dir))
-
-    for tile, path in tqdm(tiles, ascii=True, unit="mask"):
-        image = np.array(Image.open(path).convert("P"), dtype=np.uint8)
-        mask = (image == 1).astype(np.uint8)
-        handler.apply(tile, mask)
-
-    # output feature collection
-    handler.save(os.path.join(output_folder, "feature.geojson"))
-
 if __name__=="__main__":
     config = toml.load('config/predict-config.toml')
-
-    checkpoint_path = config["checkpoint_path"]
-    checkpoint_name = config["checkpoint_name"]
+    
+    city_name = config["city_name"]
+    target_type = config["target_type"]
+    tiles_dir = os.path.join("results", '02Images', city_name)
+    mask_dir = os.path.join("results", "03Masks", target_type, city_name)
+    
     tile_size =  config["img_size"]
-    tiles_dir = config["img_dir"] 
-    mask_dir = config["mask_dir"] 
-    target_type = config["target_type"] 
-    feature_output_path = os.path.join("results", str(target_type))
+
+    # load checkpoints
     device = torch.device("cuda")
-    chkpt = torch.load(os.path.join(checkpoint_path, checkpoint_name), map_location=device)
+    if target_type == "Solar":
+        checkpoint_path = config["checkpoint_path"]
+        checkpoint_name = config["solar_checkpoint"]
+        chkpt = torch.load(os.path.join(checkpoint_path, checkpoint_name), map_location=device)
+    
+    elif target_type == "Green":
+        checkpoint_path = config["checkpoint_path"]
+        checkpoint_name = config["green_checkpoint"]
+        chkpt = torch.load(os.path.join(checkpoint_path, checkpoint_name), map_location=device)
+
     
     predict(tiles_dir, mask_dir, tile_size, device, chkpt)
