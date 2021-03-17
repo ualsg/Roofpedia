@@ -3,18 +3,15 @@ import sys
 import argparse
 import collections
 from contextlib import contextmanager
-
+import toml
+from tqdm import tqdm
 from PIL import Image
-
 import torch
 from torch.nn import DataParallel
 from torch.optim import Adam
 from torch.utils.data import DataLoader
 from torchvision.transforms import Resize, CenterCrop, Normalize
-
-from tqdm import tqdm
-
-from robosat.transforms import (
+from src.transforms import (
     JointCompose,
     JointTransform,
     JointRandomHorizontalFlip,
@@ -23,13 +20,12 @@ from robosat.transforms import (
     ImageToTensor,
     MaskToTensor,
 )
-from robosat.datasets import SlippyMapTilesConcatenation
-from robosat.metrics import Metrics
-from robosat.losses import CrossEntropyLoss2d, mIoULoss2d, FocalLoss2d, LovaszLoss2d
-from robosat.unet import UNet
-from robosat.utils import plot
-from robosat.log import Log
-import toml
+from src.datasets import SlippyMapTilesConcatenation
+from src.metrics import Metrics
+from src.losses import CrossEntropyLoss2d, mIoULoss2d, FocalLoss2d, LovaszLoss2d
+from src.unet import UNet
+from src.utils import plot
+
 
 def get_dataset_loaders(target_size, batch_size, dataset_path):
     target_size = (target_size, target_size)

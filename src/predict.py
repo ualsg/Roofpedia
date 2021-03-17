@@ -12,14 +12,10 @@ from tqdm import tqdm
 from PIL import Image
 import toml
 
-from robosat.datasets import BufferedSlippyMapDirectory
-from robosat.unet import UNet
-from robosat.config import load_config
-from robosat.transforms import ConvertImageMode, ImageToTensor
-from robosat.colors import make_palette
-
-from robosat.tiles import tiles_from_slippy_map
-from robosat.features.parking import ParkingHandler
+from src.datasets import BufferedSlippyMapDirectory
+from src.unet import UNet
+from src.transforms import ConvertImageMode, ImageToTensor
+from src.colors import make_palette
 
 def predict(tiles_dir, mask_dir, tile_size, device, chkpt):
     # load device

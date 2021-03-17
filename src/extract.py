@@ -10,16 +10,15 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import Point
 
-from robosat.tiles import tiles_from_slippy_map
-from robosat.features.parking import ParkingHandler
+from src.tiles import tiles_from_slippy_map
+from src.features.building import Roof_features
 
 def mask_to_feature(mask_dir):
 
-    handler = ParkingHandler()
+    handler = Roof_features()
     
     tiles = list(tiles_from_slippy_map(mask_dir))
 
-    
     for tile, path in tqdm(tiles, ascii=True, unit="mask"):
         image = np.array(Image.open(path).convert("P"), dtype=np.uint8)
         mask = (image == 1).astype(np.uint8)

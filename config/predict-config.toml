@@ -1,5 +1,5 @@
 # enter variables for easy prediction config
-city_name = "Melbourne"
+city_name = "Luxembourg"
 
 # for green roofs, change to "Green"
 target_type = "Solar"
