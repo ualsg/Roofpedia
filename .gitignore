@@ -8,9 +8,10 @@ data
 *.pth
 *.pb
 
-checkpoint
-
-
-*.ipynb
 *.webp
 *.png
+
+
+checkpoint
+
+Pipeline.ipynb
