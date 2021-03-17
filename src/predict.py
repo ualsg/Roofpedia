@@ -78,18 +78,19 @@ def mask_to_feature(output_folder):
         handler.apply(tile, mask)
 
     # output feature collection
-    handler.save(os.path.join(output_path, "feature.geojson"))
+    handler.save(os.path.join(output_folder, "feature.geojson"))
 
 if __name__=="__main__":
-    config = toml.load('predict config.toml')
+    config = toml.load('config/predict-config.toml')
 
     checkpoint_path = config["checkpoint_path"]
     checkpoint_name = config["checkpoint_name"]
     tile_size =  config["img_size"]
     tiles_dir = config["img_dir"] 
     mask_dir = config["mask_dir"] 
+    target_type = config["target_type"] 
+    feature_output_path = os.path.join("results", str(target_type))
     device = torch.device("cuda")
-    # load checkpoint
     chkpt = torch.load(os.path.join(checkpoint_path, checkpoint_name), map_location=device)
     
     predict(tiles_dir, mask_dir, tile_size, device, chkpt)
