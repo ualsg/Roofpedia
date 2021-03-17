@@ -1,9 +1,8 @@
 import os
 import sys
 import collections
-from contextlib import contextmanager
-
-from PIL import Image
+import toml
+from tqdm import tqdm
 
 import torch
 from torch.nn import DataParallel
@@ -11,21 +10,12 @@ from torch.optim import Adam
 from torch.utils.data import DataLoader
 from torchvision.transforms import Resize, CenterCrop, Normalize
 
-from tqdm import tqdm
-
-from robosat.datasets import SlippyMapTilesConcatenation
-from robosat.metrics import Metrics
-from robosat.losses import CrossEntropyLoss2d, mIoULoss2d, FocalLoss2d, LovaszLoss2d
-from robosat.unet import UNet
-from robosat.utils import plot
-from robosat.log import Log
-import toml
-
+from src.losses import CrossEntropyLoss2d, mIoULoss2d, FocalLoss2d, LovaszLoss2d
+from src.unet import UNet
+from src.utils import plot
 from src.train import get_dataset_loaders, train, validate
 
-
 def loop():
-
     device = torch.device("cuda")
 
     if not torch.cuda.is_available():
@@ -38,8 +28,6 @@ def loop():
     except KeyError:
         if model["opt"]["loss"] in ("CrossEntropy", "mIoU", "Focal"):
             sys.exit("Error: The loss function used, need dataset weights values")
-
-    # add in resume training if possible
 
     # loading Model
     net = UNet(num_classes)
@@ -61,14 +49,12 @@ def loop():
     else:
         sys.exit("Error: Unknown Loss Function value !")
 
-
     #loading data
     train_loader, val_loader = get_dataset_loaders(target_size, batch_size, dataset_path)
     history = collections.defaultdict(list)
 
     # training loop
     for epoch in range(0, num_epochs):
-        # log.log("Epoch: {}/{}".format(epoch + 1, num_epochs))
 
         print("Epoch: " + str(epoch +1))
         train_hist = train(train_loader, num_classes, device, net, optimizer, criterion)
@@ -96,7 +82,6 @@ def loop():
             checkpoint = target_type + "-checkpoint-{:03d}-of-{:03d}.pth".format(epoch + 1, num_epochs)
             states = {"epoch": epoch + 1, "state_dict": net.state_dict(), "optimizer": optimizer.state_dict()}
             torch.save(states, os.path.join(checkpoint_path, checkpoint))
-
 
 if __name__ == "__main__":
     config = toml.load('config/train-config.toml')
