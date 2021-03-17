@@ -8,8 +8,9 @@ data
 *.pth
 *.pb
 
-dataset
 checkpoint
-results
+
 
 *.ipynb
+*.webp
+*.png
