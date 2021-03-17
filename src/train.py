@@ -31,11 +31,6 @@ from robosat.utils import plot
 from robosat.log import Log
 import toml
 
-
-
-
-
-
 def get_dataset_loaders(target_size, batch_size, dataset_path):
     target_size = (target_size, target_size)
     path = dataset_path
@@ -227,18 +222,18 @@ def loop():
 
 
 if __name__ == "__main__":
-    config = toml.load('train config.toml')
+    config = toml.load('config/train-config.toml')
 
     num_classes = 2
-    lr = config['training']['lr']
-    loss_func = config['training']['loss_func']
-    num_epochs = config['training']['num_epochs']
-    target_size = config['training']['target_size']
-    batch_size  = config['training']['batch_size']
+    lr = config['lr']
+    loss_func = config['loss_func']
+    num_epochs = config['num_epochs']
+    target_size = config['target_size']
+    batch_size  = config['batch_size']
 
-    dataset_path = config['training']['dataset_path']
-    checkpoint_path = config['training']['checkpoint_path']
-    target_type = config['training']['target_type']
+    dataset_path = config['dataset_path']
+    checkpoint_path = config['checkpoint_path']
+    target_type = config['target_type']
     # make dir for checkpoint
     os.makedirs(checkpoint_path, exist_ok=True)
     loop()

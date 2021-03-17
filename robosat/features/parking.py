@@ -102,3 +102,9 @@ class ParkingHandler:
 
         with open(out, "w") as fp:
             geojson.dump(collection, fp)
+
+    def jsonify(self):
+        collection = geojson.FeatureCollection(self.features)
+
+        return collection 
+        
