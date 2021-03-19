@@ -11,7 +11,7 @@ from src.features.core import denoise, grow, contours, simplify, featurize, pare
 class Roof_features:
     kernel_size_denoise = 25
     kernel_size_grow = 25
-    simplify_threshold = 0.01
+    simplify_threshold = 0.02
 
     def __init__(self):
         self.features = []

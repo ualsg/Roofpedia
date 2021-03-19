@@ -1,14 +1,22 @@
 import os
 import torch
 import toml
+import argparse
 
 from src.predict import predict
 from src.extract import intersection
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument("city", help="City to be predicted, must be the same as the name of the dataset")
+parser.add_argument("type", help="Roof Typology, Green for Greenroof, Solar for PV Roof")
+args = parser.parse_args()
+
 config = toml.load('config/predict-config.toml')
     
-city_name = config["city_name"]
-target_type = config["target_type"]
+city_name = args.city
+target_type = args.type
+
 tiles_dir = os.path.join("results", '02Images', city_name)
 mask_dir = os.path.join("results", "03Masks", target_type, city_name)
 tile_size =  config["img_size"]

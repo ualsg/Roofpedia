@@ -4,6 +4,8 @@
 __pycache__
 test
 data
+.vscode
+
 
 *.pth
 *.pb

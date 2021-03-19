@@ -1,12 +1,12 @@
 # enter variables for easy prediction config
-city_name = "Luxembourg"
+city_name = "Luxembourg_small"
 
 # for green roofs, change to "Green"
-target_type = "Solar"
+target_type = "Green"
 
 
 # optional settings
 img_size = 256
 checkpoint_path = "checkpoint"
-solar_checkpoint = "Solar_Best.pth"
-green_checkpoint = "Green_Best.pth"
+solar_checkpoint = "solar_demo.pth"
+green_checkpoint = "green_demo.pth"
