@@ -6,7 +6,6 @@ test
 data
 .vscode
 
-
 *.pth
 *.pb
 
@@ -17,3 +16,4 @@ data
 checkpoint
 
 Pipeline.ipynb
+*.ipynb
