@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://ual.sg/">
-    <img src="images/logo.png" alt="Logo">
+    <img src="images/logo.jpg" alt="Logo">
   </a>
   <h3 align="center">Roofpedia - Mapping Roofscapes with AI</h3>
   <p align="center">
