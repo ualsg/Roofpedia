@@ -51,6 +51,27 @@ def intersection(target_type, city_name, mask_dir):
     return intersections
 
 
+def intersection_from_file(prediction_path, target_type, city_name, mask_dir):
+    # predicted features
+    print()
+    print("Converting Prediction Masks to GeoJson Features")
+    prediction = gp.GeoDataFrame.from_file(prediction_path)[['geometry']]  
+
+    # loading building polygons
+    city = 'results/01City/' + city_name + '.geojson'
+    city = gp.GeoDataFrame.from_file(city)[['geometry']]  
+    city['area'] = city['geometry'].to_crs({'init': 'epsg:3395'}).map(lambda p: p.area)
+    
+    intersections= gp.sjoin(city, prediction, how="inner", op='intersects')
+    intersections = intersections.drop_duplicates(subset=['geometry'])
+    
+    intersections.to_file('results/04Results/' + city_name + '_' + target_type + ".geojson", driver='GeoJSON')
+    
+    print()
+    print("Process complete, footprints with " + target_type + " roofs are saved at results/04Results/" + city_name + '_' + target_type + ".geojson")
+    return intersections
+
+
 if __name__=="__main__":
 
     config = toml.load('config/predict-config.toml')

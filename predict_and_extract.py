@@ -6,7 +6,6 @@ import argparse
 from src.predict import predict
 from src.extract import intersection
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("city", help="City to be predicted, must be the same as the name of the dataset")
 parser.add_argument("type", help="Roof Typology, Green for Greenroof, Solar for PV Roof")
