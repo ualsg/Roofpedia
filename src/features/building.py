@@ -9,9 +9,9 @@ from src.features.core import denoise, grow, contours, simplify, featurize, pare
 
 
 class Roof_features:
-    kernel_size_denoise = 25
-    kernel_size_grow = 25
-    simplify_threshold = 0.02
+    kernel_size_denoise = 100
+    kernel_size_grow = 100
+    simplify_threshold = 0.1
 
     def __init__(self):
         self.features = []
@@ -59,7 +59,7 @@ class Roof_features:
         features = collections.defaultdict(set)
 
         for i, (polygon, node) in enumerate(zip(polygons, hierarchy)):
-            if len(polygon) < 3:
+            if len(polygon) < 1:
                 print("Warning: simplified feature no longer valid polygon, skipping", file=sys.stderr)
                 continue
 

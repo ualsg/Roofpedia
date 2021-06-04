@@ -25,7 +25,7 @@ Steps:
 3. Put the geojson and satellite tiles in their corresponding folders
 4. run extract and predict
 5. get result!
-### Prerequisites
+### 1. Prerequisites
 
 You could use `environment.yml` to create a conda environment for Roofpedia
 
@@ -33,14 +33,50 @@ You could use `environment.yml` to create a conda environment for Roofpedia
   conda env create -f environment.yml
   ```
 
+For non-gpu users, delete `cudatoolkit=11.1` from environment.yml to run the inference on CPU.
+
 ### Data Preparation
+
+For inference, datasets should be processed and placed in the `results` folder. 
+
+A sample dataset is provided in the current results folder for illustration. 
+
+The structure of the `results` folder is as follows: 
+
+📂results
+ ┣ 📂01City 
+ ┃- ┗ 📊Cityname1.geojson
+ ┃- ┗ 📊Cityname2.geojson
+ ┣ 📂02Images
+ ┃--- ┗ 📂Cityname1 
+ ┃--- ┗ 📂Cityname2 
+ ┣ 📂03Masks
+ ┃--- ┗ 📂Green
+ ┃---   ┗ 📂Cityname1
+ ┃---   ┗ 📂Cityname2
+ ┃--- ┗ 📂Solar
+ ┃---   ┗ 📂Cityname1
+ ┃---   ┗ 📂Cityname2
+ ┣ 📂04Results
+ ┃- ┗ 📊Cityname1_Green.geojson
+ ┃- ┗ 📊Cityname1_Solar.geojson
+ ┃- ┗ 📊Cityname2_Green.geojson
+ ┃- ┗ 📊Cityname2_Solar.geojson
+
+
 Save a geojson file of building polygons (can be done in QGIS)
 Extract the satellite tiles in slippymap format (can be done in QGIS)
 ### Prediction
 Predictions can be carried out by running the following sample code. The name of the city depends on the name of each dataset.
 
  ```sh
-  python predict_and_extract.py --city Berlin --type Solar
+  python predict_and_extract.py <city_name> <type>
+  ```
+
+so for example, when predicting Solar Panels on buildings in Berlin, use:
+
+ ```sh
+  python predict_and_extract.py Berlin Solar
   ```
 ### Training
 By preparing your own labels, you can train your own model. Training options can be set under `config/train-config.toml`
