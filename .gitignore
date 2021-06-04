@@ -5,18 +5,17 @@ __pycache__
 test
 data
 .vscode
-
 *.pth
 *.pb
-
 *.webp
 *.png
-
-
 checkpoint
-
 Index Pipeline.ipynb
 Pipeline.ipynb
-
 *.ipynb
+New Cities.qgz
+*.geojson
+results/01City/Luxembourg.geojson
+results/01City/Luxembourg.geojson
+results/01City/Luxembourg.geojson
 New Cities.qgz
