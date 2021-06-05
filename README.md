@@ -48,19 +48,19 @@ Predictions can be carried out by running the following sample code. The name of
   python predict_and_extract.py <city_name> <type>
   ```
 
-A sample dataset is provided in the results folder for prediction, just run
+A sample dataset is provided in the results folder with the name `NY` for prediction, just run
 
  ```sh
-  python predict_and_extract.py Luxembourg Solar
+  python predict_and_extract.py NY Solar
   ```
 
 for Greenroof, run
 
  ```sh
-  python predict_and_extract.py Luxembourg Green
+  python predict_and_extract.py NY Green
   ```
 
-See the result in `04Result` folder
+See the result in `NY_Solar.geojson` or `NY_Green.geojson` in `04Result` folder and visualise the results in QGIS or ArcGIS.
 
 ### Custom Dataset
 Custom Dataset pairs can be created with QGIS using tiling functions. 
