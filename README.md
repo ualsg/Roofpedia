@@ -35,7 +35,7 @@ For non-gpu users, delete `cudatoolkit=11.1` from environment.yml to run the inf
 
 ### 2. Data Preparation
 
-Download the pretrained weights [here](https://drive.google.com/file/d/1IdB6P7grkml-anI4iEGC4NAKLJA2V2XX/view?usp=sharing) and extract them to the root folder of the repo. A sample dataset is provided in the zip file as well.
+Download the pretrained weights and sample dataset [here](https://drive.google.com/file/d/1uRsuXxSEhDEHaa8CoMmncpbClJ2fapJx/view?usp=sharing) and extract them to the root folder of the repo. 
 
 For custom inference, datasets should be processed and placed in the `results` folder. See more details in later sections.
 
