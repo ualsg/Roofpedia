@@ -21,7 +21,8 @@ mask_dir = os.path.join("results", "03Masks", target_type, city_name)
 tile_size =  config["img_size"]
 
 # load checkpoints
-device = torch.device("cuda")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 if target_type == "Solar":
     checkpoint_path = config["checkpoint_path"]
     checkpoint_name = config["solar_checkpoint"]
