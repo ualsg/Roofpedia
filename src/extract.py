@@ -1,14 +1,11 @@
 import os
 import toml
+import argparse
 
 from tqdm import tqdm
 from PIL import Image
-
 import geopandas as gp
-from geopandas.tools import sjoin
 import numpy as np
-import pandas as pd
-from shapely.geometry import Point
 
 from src.tiles import tiles_from_slippy_map
 from src.features.building import Roof_features
@@ -74,9 +71,13 @@ def intersection_from_file(prediction_path, target_type, city_name, mask_dir):
 
 if __name__=="__main__":
 
-    config = toml.load('config/predict-config.toml')
-    city_name = config["city_name"]
-    target_type = config["target_type"]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("city", help="City to be predicted, must be the same as the name of the dataset")
+    parser.add_argument("type", help="Roof Typology, Green for Greenroof, Solar for PV Roof")
+    args = parser.parse_args()
+
+    city_name = args.city
+    target_type = args.type
     mask_dir = os.path.join("results", "03Masks", target_type, city_name)
     
     intersection(target_type, city_name, mask_dir)

@@ -9,9 +9,9 @@ from src.features.core import denoise, grow, contours, simplify, featurize, pare
 
 
 class Roof_features:
-    kernel_size_denoise = 100
-    kernel_size_grow = 100
-    simplify_threshold = 0.1
+    kernel_size_denoise = 15
+    kernel_size_grow = 10
+    simplify_threshold = 0.01
 
     def __init__(self):
         self.features = []
