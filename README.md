@@ -44,21 +44,21 @@ For custom inference, datasets should be processed and placed in the `results` f
 
 Predictions can be carried out by running the following sample code. The name of the city depends on the name of each dataset.
 
- ```sh
+```sh
   python predict_and_extract.py <city_name> <type>
-  ```
+```
 
 A sample dataset is provided in the results folder with the name `NY` for prediction, just run
 
- ```sh
+```sh
   python predict_and_extract.py NY Solar
-  ```
+```
 
 for Greenroof, run
 
- ```sh
+```sh
   python predict_and_extract.py NY Green
-  ```
+```
 
 See the result in `NY_Solar.geojson` or `NY_Green.geojson` in `04Result` folder and visualise the results in QGIS or ArcGIS.
 
@@ -107,19 +107,51 @@ By preparing your own labels, you can train your own model. Training options can
  ```sh
   python train.py
   ```
+
+
+## Paper
+
+A [paper](https://arxiv.org/abs/2105.09908) about the work was published in _Landscape and Urban Planning_ and it is available open access.
+
+If you use this work in a scientific context, please cite this article.
+
+Wu AN, Biljecki F (2021): Roofpedia: Automatic mapping of green and solar roofs for an open roofscape registry and evaluation of urban sustainability. Landscape and Urban Planning 214: 104167, 2021. doi:10.1016/j.landurbplan.2021.104167
+
+```
+@article{roofpedia,
+  author = {Abraham Noah Wu and Filip Biljecki},
+  doi = {10.1016/j.landurbplan.2021.104167},
+  journal = {Landscape and Urban Planning},
+  pages = {104167},
+  title = {Roofpedia: Automatic mapping of green and solar roofs for an open roofscape registry and evaluation of urban sustainability},
+  url = {https://doi.org/10.1016%2Fj.landurbplan.2021.104167},
+  volume = {214},
+  year = 2021
+}
+```
+
+
+## Limitations, issues, and future work
+
+Roofpedia is an experimental research prototype, which leaves much opportunity for improvement and future work.
+
+As with all other machine learning workflows, the results are not always 100% accurate.
+Much of the performance of the predictions (e.g. classification of whether a building has a solar panel on its rooftop) depends on the quality of the input imagery.
+Therefore, some buildings are misclassified, especially in imagery in which it is difficult even for humans to discern rooftop greenery and photovoltaics, resulting in false positives and false negatives.
+However, when these results are aggregated at the city-scale, the results tend to be more accurate.
+
+For future work, we hope to add more cities to our collection and add the temporal aspect to the project, tracking the evolution of greenery and solar panels through time.
+
+
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-<!-- CONTACT -->
 
-<!-- ## Contact
+## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name) -->
-
+[Abraham Noah Wu](https://ual.sg/authors/abraham/), [Urban Analytics Lab](https://ual.sg), National University of Singapore, Singapore
 
 
 <!-- ACKNOWLEDGEMENTS -->
@@ -129,7 +161,13 @@ Roofpedia is made possible by using the following packages
 
 * [PyTorch](https://pytorch.org/)
 * [GeoPandas](https://geopandas.org/)
-* [Robosat](https://github.com/mapbox/robosat) - 
+* [Robosat](https://github.com/mapbox/robosat) -- 
 loading of slippy map tiles for training and mask to feature function is borrowed from robosat
+
+This research is part of the project Large-scale 3D Geospatial Data for Urban Analytics, which is supported by the National University of Singapore under the Start-Up Grant R-295-000-171-133.
+
+We gratefully acknowledge the sources of the used input data.
+
+Some of the aspects of the project and its name —- Roofpedia -— are inspired by [Treepedia](http://senseable.mit.edu/treepedia), an excellent project by the [MIT Senseable City Lab](https://senseable.mit.edu) to measure and map the amount of street greenery in cities from the pedestrian perspective, and compare cities around the world.
 
 
