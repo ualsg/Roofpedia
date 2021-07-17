@@ -1,4 +1,4 @@
-name: roofpedia
+name: roofpedia-cpu
 dependencies:
   - python=3.8
   - geopandas
@@ -9,7 +9,6 @@ dependencies:
   - tqdm
   - pytorch
   - torchvision
-  - cudatoolkit=10.2
   - pip:
     - webp
     - mercantile==1.0.4

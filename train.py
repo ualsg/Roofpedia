@@ -3,7 +3,7 @@ import sys
 import collections
 import toml
 from tqdm import tqdm
-
+import webp
 import torch
 from torch.nn import DataParallel
 from torch.optim import Adam
@@ -78,7 +78,7 @@ def loop():
             visual = "history-{:05d}-of-{:05d}.png".format(epoch + 1, num_epochs)
             plot(os.path.join(checkpoint_path, visual), history)
         
-        if (epoch+1)%10 == 0:
+        if (epoch+1)%20 == 0:
             checkpoint = target_type + "-checkpoint-{:03d}-of-{:03d}.pth".format(epoch + 1, num_epochs)
             states = {"epoch": epoch + 1, "state_dict": net.state_dict(), "optimizer": optimizer.state_dict()}
             torch.save(states, os.path.join(checkpoint_path, checkpoint))
