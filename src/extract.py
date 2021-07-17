@@ -12,7 +12,6 @@ from src.features.building import Roof_features
 def mask_to_feature(mask_dir):
 
     handler = Roof_features()
-    
     tiles = list(tiles_from_slippy_map(mask_dir))
 
     for tile, path in tqdm(tiles, ascii=True, unit="mask"):
@@ -39,7 +38,6 @@ def intersection(target_type, city_name, mask_dir):
     
     intersections= gp.sjoin(city, prediction, how="inner", op='intersects')
     intersections = intersections.drop_duplicates(subset=['geometry'])
-    
     intersections.to_file('results/04Results/' + city_name + '_' + target_type + ".geojson", driver='GeoJSON')
     
     print()
@@ -60,7 +58,6 @@ def intersection_from_file(prediction_path, target_type, city_name, mask_dir):
     
     intersections= gp.sjoin(city, prediction, how="inner", op='intersects')
     intersections = intersections.drop_duplicates(subset=['geometry'])
-    
     intersections.to_file('results/04Results/' + city_name + '_' + target_type + ".geojson", driver='GeoJSON')
     
     print()
