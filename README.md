@@ -31,8 +31,11 @@ You could use `environment.yml` to create a conda environment for Roofpedia
   conda env create -f environment.yml
   ```
 
-For non-gpu users, delete `cudatoolkit=11.1` from environment.yml to run the inference on CPU.
+For non-gpu users, use `environment_cpu.yml` instead.
 
+  ```sh
+  conda env create -f environment_cpu.yml
+  ```
 ### 2. Data Preparation
 
 Download the pretrained weights and sample dataset [here](https://drive.google.com/file/d/1uRsuXxSEhDEHaa8CoMmncpbClJ2fapJx/view?usp=sharing) and extract them to the root folder of the repo. 
