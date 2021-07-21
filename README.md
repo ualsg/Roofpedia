@@ -13,7 +13,7 @@ This is the official repo of Roofpedia, an open registry of green roofs and sola
 
 In this repo you will find:
 * A ready to use dataset of 1,812 manually labelled polygons of rooftop greenery and solar panels covering 8 cities. 
-* A ready to use dataset of building footprints identified with Green Roofs and/or Solar roofs by Roofpedia. Download data and labels [here](https://drive.google.com/file/d/13R5hOthwtm8IR-ke_IqFLkJBOTZ0Ys-s/view?usp=sharing)
+* A ready to use dataset of building footprints identified with Green Roofs and/or Solar roofs by Roofpedia. Download data and labels [here](https://drive.google.com/file/d/183b23u6hXqdU2LmDOdCYcmNa907A1XA8/view?usp=sharing)
 * A straight forward pipeline to run prediction on your own satellite image dataset
 * A guide on how you can tweak the pipeline to detect and tag roof features to OSM building footprints (coming up)
 
