@@ -13,7 +13,7 @@ This is the official repo of Roofpedia, an open registry of green roofs and sola
 
 In this repo you will find:
 * A ready to use dataset of 1,812 manually labelled polygons of rooftop greenery and solar panels covering 8 cities. 
-* A ready to use dataset of building footprints identified with Green Roofs and/or Solar roofs by Roofpedia. Download data and labels [here](https://drive.google.com/file/d/13R5hOthwtm8IR-ke_IqFLkJBOTZ0Ys-s/view?usp=sharing)
+* A ready to use dataset of building footprints identified with Green Roofs and/or Solar roofs by Roofpedia. Download data and labels [here](https://drive.google.com/file/d/183b23u6hXqdU2LmDOdCYcmNa907A1XA8/view?usp=sharing)
 * A straight forward pipeline to run prediction on your own satellite image dataset
 * A guide on how you can tweak the pipeline to detect and tag roof features to OSM building footprints (coming up)
 
@@ -31,8 +31,11 @@ You could use `environment.yml` to create a conda environment for Roofpedia
   conda env create -f environment.yml
   ```
 
-For non-gpu users, delete `cudatoolkit=11.1` from environment.yml to run the inference on CPU.
+For non-gpu users, use `environment_cpu.yml` instead.
 
+  ```sh
+  conda env create -f environment_cpu.yml
+  ```
 ### 2. Data Preparation
 
 Download the pretrained weights and sample dataset [here](https://drive.google.com/file/d/1uRsuXxSEhDEHaa8CoMmncpbClJ2fapJx/view?usp=sharing) and extract them to the root folder of the repo. 
@@ -54,7 +57,7 @@ A sample dataset is provided in the results folder with the name `NY` for predic
   python predict_and_extract.py NY Solar
 ```
 
-for Greenroof, run
+for Greenroofs, run
 
 ```sh
   python predict_and_extract.py NY Green
@@ -102,7 +105,7 @@ The structure of the `results` folder is as follows:
 
 
 ### Training
-By preparing your own labels, you can train your own model. Training options can be set under `config/train-config.toml`
+By preparing your own labels, you can train your own model. Training options can be set under `config/train-config.toml`. The default folder to the dataset is the `dataset` folder. The `dataset.py` performs train-test-val split to the extracted XYZ file structure, named `images ` for satellite images and `labels` for the polygon masks respectively. Once the data is prepared, run the following to train new models according to the labels. The labels are not limited to greenroof or solar panels, but can be any custom object pn the roof as long as sufficient labels are provided.
 
  ```sh
   python train.py
