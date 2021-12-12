@@ -37,6 +37,12 @@ def loop():
     # define optimizer 
     optimizer = Adam(net.parameters(), lr=lr)
 
+    # resume training
+    if model_path:
+        chkpt = torch.load(model_path, map_location=device)
+        net.load_state_dict(chkpt["state_dict"])
+        optimizer.load_state_dict(chkpt["optimizer"])
+
     # select loss function, just set a default, or try to experiment
     if loss_func == "CrossEntropy":
         criterion = CrossEntropyLoss2d(weight=weight).to(device)
@@ -96,6 +102,11 @@ if __name__ == "__main__":
     dataset_path = config['dataset_path']
     checkpoint_path = config['checkpoint_path']
     target_type = config['target_type']
+
+    if config['model_path'] != '':
+        model_path = config['model_path']
+
+
     # make dir for checkpoint
     os.makedirs(checkpoint_path, exist_ok=True)
     loop()

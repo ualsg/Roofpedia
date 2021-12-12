@@ -14,3 +14,4 @@ target_size = 256
 batch_size  = 8
 weights = [1.513212, 10.147043]
 checkpoint_path = "checkpoint"
+model_path = ''
