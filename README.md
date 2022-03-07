@@ -13,7 +13,7 @@ This is the official repo of Roofpedia, an open registry of green roofs and sola
 
 In this repo you will find:
 * A ready to use dataset of 1,812 manually labelled polygons of rooftop greenery and solar panels covering 8 cities. 
-* A ready to use dataset of building footprints identified with Green Roofs and/or Solar roofs by Roofpedia. Download data and labels [here](https://drive.google.com/file/d/183b23u6hXqdU2LmDOdCYcmNa907A1XA8/view?usp=sharing)
+* A ready to use dataset of building footprints identified with Green Roofs and/or Solar roofs by Roofpedia. Download data and labels [here](https://doi.org/10.6084/m9.figshare.19314422)
 * A straight forward pipeline to run prediction on your own satellite image dataset
 * A guide on how you can tweak the pipeline to detect and tag roof features to OSM building footprints (coming up)
 
@@ -38,7 +38,7 @@ For non-gpu users, use `environment_cpu.yml` instead.
   ```
 ### 2. Data Preparation
 
-Download the pretrained weights and sample dataset [here](https://drive.google.com/file/d/1uRsuXxSEhDEHaa8CoMmncpbClJ2fapJx/view?usp=sharing) and extract them to the root folder of the repo. 
+Download the pretrained weights and sample dataset [here](https://doi.org/10.6084/m9.figshare.19314422) and extract them to the root folder of the repo. 
 
 For custom inference, datasets should be processed and placed in the `results` folder. See more details in later sections.
 
