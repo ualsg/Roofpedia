@@ -118,7 +118,7 @@ A [paper](https://doi.org/10.1016/j.landurbplan.2021.104167) about the work was 
 
 If you use this work in a scientific context, please cite this article.
 
-Wu AN, Biljecki F (2021): Roofpedia: Automatic mapping of green and solar roofs for an open roofscape registry and evaluation of urban sustainability. Landscape and Urban Planning 214: 104167, 2021. doi:10.1016/j.landurbplan.2021.104167
+Wu AN, Biljecki F (2021): Roofpedia: Automatic mapping of green and solar roofs for an open roofscape registry and evaluation of urban sustainability. Landscape and Urban Planning 214: 104167. doi:10.1016/j.landurbplan.2021.104167
 
 ```
 @article{roofpedia,
